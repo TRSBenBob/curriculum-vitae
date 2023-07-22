@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@page {
+  size: A4;
+}
+
+@layer base {
+  html {
+    font-size: 12pt;
+  }
+}
+
+@layer components {
+  h2 {
+    line-height: 1 !important;
+    text-shadow: 2px 1px theme('colors.white'), 0 1px theme('colors.white'),
+      -2px 1px theme('colors.white'), 2px 2px theme('colors.white'), 0 2px theme('colors.white'),
+      -2px 2px theme('colors.white');
+  }
+}
+
+#redact {
+  & > * {
+    grid-area: 1 / 1;
+  }
+}
+
+body.redacted {
+  .sheet {
+    @apply font-redacted tracking-[0.09em] text-slate-200;
+
+    [class*='bg-yellow-200'] {
+      background: none;
+    }
+
+    * {
+      @apply font-redacted;
+
+      text-shadow: 2px 0 currentColor, -2px 0 currentColor;
+    }
+  }
+
+  #redact {
+    .lines {
+      opacity: 0;
+    }
+    .text {
+      opacity: 1;
+    }
+  }
+}
