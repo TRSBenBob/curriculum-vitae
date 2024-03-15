@@ -35,10 +35,14 @@ body.redacted {
       background: none;
     }
 
-    * {
+    *:not(i) {
       @apply font-redacted;
 
       text-shadow: 2px 0 currentColor, -2px 0 currentColor;
+    }
+
+    i {
+      text-shadow: none;
     }
   }
 
